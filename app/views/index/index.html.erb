@@ -1,0 +1,88 @@
+
+    <div class="flex min-h-screen">
+        <!-- Left Sidebar -->
+        <div class="w-64 border-r p-6">
+            
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-6" data-controller="upload-container">
+            <div class="fixed top-4 right-1/2 translate-x-1/2 bg-white rounded-lg shadow-lg py-4 px-6 w-80"
+                data-upload-container-target="globalProgressContainer"
+                style="display:none">
+                <div class="flex justify-between items-center mb-2">
+                <span class="text-sm text-gray-600">Upload progress</span>
+                <span class="text-sm text-gray-500" data-upload-container-target="globalProgressFileCount">0</span>
+                <span class="text-sm text-gray-500" data-upload-container-target="globalProgressText">estimate: 0m 00s</span>
+                </div>
+                
+                <div class="relative h-2 bg-gray-100 rounded-full overflow-hidden">
+                <div class="absolute top-0 left-0 h-full w-3/8 bg-gray-900 rounded-full 
+                            transition-all duration-300 ease-in-out"></div>
+                </div>
+            </div>
+            
+            <h2 class="text-2xl mb-6">Album Photos</h2>
+            
+            <!-- Photo Grid -->
+            <div class="grid grid-cols-3 gap-4" data-upload-container-target="grid">
+
+                <!-- Upload Box -->
+                <button class="border-2 border-dashed border-gray-300 rounded-lg p-8 flex flex-col items-center justify-center text-gray-500"
+                        data-action="click->upload-container#pickFiles">
+                    <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span class="text-sm font-medium">Select Images</span>
+                    <span class="text-xs mt-1">or drag photos from your computer</span>
+                </button>
+                
+                <!-- Placeholder Images -->
+                <template data-upload-container-target="template">
+                        <div class="bg-gray-300 rounded-lg aspect-square flex items-center justify-center relative"
+                        data-controller="upload-element">
+                        <div class="relative w-32 h-32"
+                            data-upload-element-target="progressContainer">
+                            <!-- SVG for circular progress -->
+                            <svg class="w-full h-full -rotate-90">
+                            <!-- Background circle -->
+                            <circle 
+                                class="stroke-gray-200" 
+                                stroke-width="8" 
+                                fill="transparent" 
+                                r="56" 
+                                cx="64" 
+                                cy="64"
+                            ></circle>
+                            
+                            <!-- Progress circle -->
+                            <circle
+                                data-upload-element-target="progressCircle"
+                                class="stroke-blue-500 transition-all duration-300 ease-in-out" 
+                                stroke-width="8" 
+                                stroke-linecap="round"
+                                fill="transparent" 
+                                r="56" 
+                                cx="64" 
+                                cy="64"
+                                style="stroke-dasharray: 351.86; stroke-dashoffset: 351.86"
+                            ></circle>
+                            </svg>
+                            
+                            <!-- Percentage text -->
+                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl font-semibold text-white"
+                                data-upload-element-target="progressNumber">
+                            0%
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="w-64 border-l p-6">
+        </div>
+    </div>

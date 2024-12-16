@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import UploadContainerController from "./upload_container_controller"
+application.register("upload-container", UploadContainerController)
+
+import UploadElementController from "./upload_element"
+application.register("upload-element", UploadElementController)
